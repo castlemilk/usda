@@ -1,0 +1,7 @@
+SR28*
+*.txt
+*.zip
+*.json
+data/
+sr28asc/
+*.xlsx
