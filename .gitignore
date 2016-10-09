@@ -1,5 +1,9 @@
 SR28*
+venv/
+*.swp
 *.txt
+.*
+*.pyc
 *.zip
 *.json
 data/
