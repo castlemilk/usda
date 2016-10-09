@@ -1,6 +1,7 @@
 SR28*
 venv/
 *.swp
+*.db
 *.txt
 .*
 *.pyc
