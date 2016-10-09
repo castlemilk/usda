@@ -52,6 +52,7 @@ mapping = {
         'CA' : 'CA',
         'CU' : 'CU',
         'F' : 'FD',
+        'FLD' : 'FD',
         'I' : 'ID',
         'PB' : 'PB',
         'FE' : 'FE',
@@ -67,6 +68,7 @@ mapping = {
         'S' : 'S', # not found
         'SN' : 'SN',
         'ZN' : 'ZN',
+        'THEBRN' : 'THEBRN',
         'THIA' : 'THIA', #THIAMIN (THIA)
         'RIBF' : 'RIBF',# RIBOFLAVIN (RIBF)
         'NIA' : 'NIA', # NIACIN (NIA)
@@ -87,7 +89,8 @@ mapping = {
         'LYCPN' : 'LYCPN',
         #'XANTHOPHYL' : 'XANTHOPHYL',
         'RETOL' : 'RETOL',
-        'VITA_IU' : 'VITA',
+        'VITA_IU' : 'VITA_IU',
+        'VIT_RAE' : 'VTIA',
         'VITC' : 'VITC',
         # vitd file
         'CHOCAL' : 'CHOCAL',
