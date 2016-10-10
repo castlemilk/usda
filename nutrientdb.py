@@ -74,8 +74,8 @@ class NutrientDB:
         count = 0
         # Iterate through each food item and build a full nutrient json document
         document = {}
-        for food in tqdm(self.database.execute('''
-                select * from food_des, fd_group where food_des.FdGrp_Cd = fd_group.FdGrp_Cd''')):
+        for food in self.database.execute('''
+                select * from food_des, fd_group where food_des.FdGrp_Cd = fd_group.FdGrp_Cd'''):
 
             # Store unique identifier for the food
             ndb_no = food['NDB_No']
@@ -238,6 +238,7 @@ class NutrientDB:
                 #   'studies': nutrient['Num_Studies']
         #       }
             }
+            #if nutrient['Tagname']:
             nut_ID = mapping[nutrient['Tagname']]
             nutrients[nut_ID] = nutrient_filtered
             #
@@ -255,6 +256,13 @@ class NutrientDB:
 
         # Return all nutrients
         return nutrients
+    def query_nutrient_definition(self, nutr_no):
+        """
+        retrieve the row which contains information about a given nutr_no
+        """
+        result = self.database.execute('''SELECT * FROM nutr_def WHERE
+                        nutr_def.Nutr_No = ?''', [nutr_no]).fetchone()
+        return result
 
     def has_data(self):
         """Queries the database to see if there is any data in it."""
