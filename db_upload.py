@@ -36,7 +36,7 @@ firebase_url = 'https://nutritiondb-3314c.firebaseio.com'
 #firebase = firebase.FirebaseApplication(url, None)
 #result = firebase.get('/USDA_DB/14416', None)
 # print ("got %d items " % len(result))
-with open('usda_document.json', 'r') as f:
+with open('usda_doc.json', 'r') as f:
     food_dict = json.load(f)
     for food, packet in tqdm(food_dict.iteritems()):
         firebase_upload(firebase_url, firebase_url+'/v2/USDA/', food, packet)

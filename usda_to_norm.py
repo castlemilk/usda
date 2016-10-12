@@ -230,6 +230,7 @@ mapping = {
         'P224W6FD' : 'F22D4N6',
         'F22D5' : 'F22D5N3', # DPA
         'F20D3' : 'F20D3', #undifferentiated
+        'F20D5' : 'F20D5',
         'P226W3FD' : 'F22D6N3',
 
 
@@ -292,8 +293,6 @@ mapping = {
 
         # main File
         'CAFFN' : 'CAFFN',
+        'CHOLE' : 'CHOLE',
         'CHOL' : 'CHOLE',
-
-        'F20D5' : '',
-        'CHOLE' : '',
         }

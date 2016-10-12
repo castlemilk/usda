@@ -74,8 +74,8 @@ class NutrientDB:
         count = 0
         # Iterate through each food item and build a full nutrient json document
         document = {}
-        for food in self.database.execute('''
-                select * from food_des, fd_group where food_des.FdGrp_Cd = fd_group.FdGrp_Cd'''):
+        for food in tqdm(self.database.execute('''
+                select * from food_des, fd_group where food_des.FdGrp_Cd = fd_group.FdGrp_Cd''')):
 
             # Store unique identifier for the food
             ndb_no = food['NDB_No']
@@ -87,26 +87,26 @@ class NutrientDB:
                 'manufacturer': food['ManufacName'],
                 "name": {
                     "long": food['Long_Desc'],
-                    'common': [],
+                    #'common': [],
                     'sci': food['SciName']
                 }
             }
 
             # Split common names by comma to get an array
-            comm_names = [com_name for com_name in food[
-                'ComName'].split(',') if com_name != '']
-            document[ndb_no]['name']['common'] = document[
-                ndb_no]['name']['common'] + comm_names
+            #comm_names = [com_name for com_name in food[
+            #    'ComName'].split(',') if com_name != '']
+            #document[ndb_no]['name']['common'] = document[
+              #  ndb_no]['name']['common'] + comm_names
 
             # We also append the langual food source description as other common names
             # of the food
-            document[ndb_no]['name']['common'] = document[ndb_no][
-                'name']['common'] + self.query_langual_foodsource(ndb_no)
+            #document[ndb_no]['name']['common'] = document[ndb_no][
+             #   'name']['common'] + self.query_langual_foodsource(ndb_no)
 
             # Add nutrient info
             document[ndb_no]['nutrients'] = self.query_nutrients(ndb_no)
             # Add portion gram converstion weights for common measures
-            document[ndb_no]['portions'] = self.query_gramweight(ndb_no)
+            #document[ndb_no]['portions'] = self.query_gramweight(ndb_no)
 
             # Put all other data into a meta field
             document[ndb_no]['meta'] = {
@@ -116,10 +116,10 @@ class NutrientDB:
                 'fat_factor': food['Fat_Factor'],
                 'carb_factor': food['CHO_Factor'],
             #   'fndds_survey': food['Survey'],
-                'ref_desc': food['Ref_desc'],
-                'ref_per': food['Refuse'],
-                'footnotes': self.query_footnote(ndb_no),
-                'langual': self.query_langual(ndb_no),
+                #'ref_desc': food['Ref_desc'],
+                #'ref_per': food['Refuse'],
+                #'footnotes': self.query_footnote(ndb_no),
+                #'langual': self.query_langual(ndb_no) ,
             }
 
             # Has user passed info to insert into mongo collection
@@ -238,7 +238,6 @@ class NutrientDB:
                 #   'studies': nutrient['Num_Studies']
         #       }
             }
-            #if nutrient['Tagname']:
             nut_ID = mapping[nutrient['Tagname']]
             nutrients[nut_ID] = nutrient_filtered
             #
@@ -256,13 +255,6 @@ class NutrientDB:
 
         # Return all nutrients
         return nutrients
-    def query_nutrient_definition(self, nutr_no):
-        """
-        retrieve the row which contains information about a given nutr_no
-        """
-        result = self.database.execute('''SELECT * FROM nutr_def WHERE
-                        nutr_def.Nutr_No = ?''', [nutr_no]).fetchone()
-        return result
 
     def has_data(self):
         """Queries the database to see if there is any data in it."""
