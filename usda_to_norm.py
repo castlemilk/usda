@@ -20,6 +20,7 @@ mapping = {
 
         'SUGAR' : 'SUGAR',
         'STARCH' : 'STARCH',
+
         'DEXTN' : 'DEXTN',
         'GLYR' : 'GLYRL',
         'GLYC' : 'GLYC',
@@ -101,7 +102,7 @@ mapping = {
         'VITK1D' : 'VITK1D',
         'RETOL' : 'RETOL',
         'VITA_IU' : 'VITA_IU',
-        'VITA_RAE' : 'VTIA',
+        'VITA_RAE' : 'VITA',
         'VITC' : 'VITC',
         # vitd file
         'CHOCAL' : 'CHOCAL',

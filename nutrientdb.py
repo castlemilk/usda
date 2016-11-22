@@ -106,7 +106,7 @@ class NutrientDB:
             # Add nutrient info
             document[ndb_no]['nutrients'] = self.query_nutrients(ndb_no)
             # Add portion gram converstion weights for common measures
-            #document[ndb_no]['portions'] = self.query_gramweight(ndb_no)
+            document[ndb_no]['portions'] = self.query_gramweight(ndb_no)
 
             # Put all other data into a meta field
             document[ndb_no]['meta'] = {
