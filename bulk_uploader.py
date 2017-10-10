@@ -37,15 +37,15 @@ def mp_upload():
 
 if __name__ == '__main__':
 
-    firebase_url = 'https://nutritiondb-3314c.firebaseio.com/v2/USDA'
-    document_source = 'usda_food_document.json'
+    firebase_url = 'https://nutritiondb-3314c.firebaseio.com/v3/USDA'
+    document_source = 'usda_food_documentv3.json'
 
     uploader = Uploader(firebase_url, document_source)
     document_count = len(uploader.document_dict.keys())
     uploader.status = 0
     def func(x, d = Uploader(
-        'https://nutritiondb-3314c.firebaseio.com/v2/USDA',
-        'usda_food_document.json')):
+        'https://nutritiondb-3314c.firebaseio.com/v3/USDA',
+        'usda_food_documentv3.json')):
         curproc = multiprocessing.current_process()
         uploader.status += 1
         print curproc, "Started Process, args={}, {}/{}".format(x[0],

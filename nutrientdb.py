@@ -83,11 +83,13 @@ class NutrientDB:
             # Store base food info as a dictionary (we will later insert this document
             # into mongo)
             document[ndb_no] = {
-                'group': food['FdGrp_Desc'],
+                'group': {
+                    'group': food['FdGrp_Desc']
+                },
                 'manufacturer': food['ManufacName'],
                 "name": {
                     "long": food['Long_Desc'],
-                    #'common': [],
+                    'common': food['ComName'],
                     'sci': food['SciName']
                 }
             }
@@ -96,7 +98,7 @@ class NutrientDB:
             #comm_names = [com_name for com_name in food[
             #    'ComName'].split(',') if com_name != '']
             #document[ndb_no]['name']['common'] = document[
-              #  ndb_no]['name']['common'] + comm_names
+            #    ndb_no]['name']['common'] + comm_names
 
             # We also append the langual food source description as other common names
             # of the food
